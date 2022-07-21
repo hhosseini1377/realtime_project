@@ -1,4 +1,4 @@
-public class main {
+public class Manager {
 
     public static void main(String[] args) {
 
@@ -8,5 +8,6 @@ public class main {
         timeCounter.start();
         iranTime.start();
         italyTime.start();
+
     }
 }
