@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="examples">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/sigar-master/bindings/java/examples" />
+      <root url="file://$USER_HOME$/Downloads/sigar-master/bindings/java/hyperic_jni/src" />
+      <root url="file://$USER_HOME$/Downloads/sigar-master/bindings/java/src" />
+    </SOURCES>
+  </library>
+</component>

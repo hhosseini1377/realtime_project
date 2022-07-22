@@ -14,7 +14,6 @@ public class TimeCounter extends Thread
                 throw new RuntimeException(e);
             }
             time_interval += 1;
-            System.out.println(time_interval);
         }
     }
 
