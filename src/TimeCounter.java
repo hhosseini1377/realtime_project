@@ -2,6 +2,8 @@
 import java.lang.*;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class TimeCounter extends Thread
@@ -13,13 +15,14 @@ public class TimeCounter extends Thread
     }
     public void run()
     {
-        Timer t = new Timer();
-        t.schedule(new TimerTask() {
+        ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
+
+        exec.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
                 increaseTimeInterval();
             }
-        }, 0, 1000);
+        }, 0, 1, TimeUnit.SECONDS);
 
     }
 
