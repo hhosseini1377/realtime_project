@@ -1,20 +1,26 @@
 
 import java.lang.*;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class TimeCounter extends Thread
 {
-    public int time_interval = 0;
+    public int time_interval = 1;
+
+    private void increaseTimeInterval(){
+        time_interval += 1;
+    }
     public void run()
     {
-        while(true){
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                increaseTimeInterval();
             }
-            time_interval += 1;
-        }
+        }, 0, 1000);
+
     }
 
     // the main method
