@@ -23,7 +23,7 @@ public class ThreadsManager extends Thread
     }
     private void resumeThread(){
         Thread highPriorityThread = findHighestPriorityThread(suspendedThreads);
-        highPriorityThread.suspend();
+        highPriorityThread.resume();
         runningThreads.add(highPriorityThread);
         suspendedThreads.remove(highPriorityThread);
     }
@@ -65,6 +65,7 @@ public class ThreadsManager extends Thread
         while(true){
             double cpuLoad = osBean.getSystemCpuLoad();
             if(!Double.isNaN(cpuLoad)){
+                System.out.println(cpuLoad);
                 switch (state){
                     case LOW:
                         if(cpuLoad > 0.7){
