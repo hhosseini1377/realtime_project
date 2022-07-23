@@ -1,6 +1,7 @@
 
 import java.time.*;
 import java.lang.*;
+import java.util.concurrent.TimeUnit;
 
 public class RealTime extends Thread{
     private final String name;
@@ -13,6 +14,12 @@ public class RealTime extends Thread{
         while(true) {
             LocalTime localtime
                     = LocalTime.of(baseHour, baseMinute, baseSecond).plusSeconds(timeCounter.time_interval);
+
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
             System.out.println("time in " + name + ": "
                     + localtime);

@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         TimeCounter timeCounter = new TimeCounter();
+        timeCounter.start();
         LocalTime initialTime = LocalTime.now();
         int initialHour = initialTime.getHour(), initialMinute = initialTime.getMinute(),
                 initialSecond = initialTime.getSecond();
@@ -24,7 +25,6 @@ public class Main {
         timeThreads.get(1).setPriority(2);
         timeThreads.get(2).setPriority(3);
         timeThreads.get(3).setPriority(4);
-
         ThreadsManager threadsManager = new ThreadsManager(timeThreads);
         threadsManager.start();
 

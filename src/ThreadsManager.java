@@ -57,8 +57,6 @@ public class ThreadsManager extends Thread
             runningThreads.add(t);
             t.start();
         }
-
-
         OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(
                 OperatingSystemMXBean.class);
 
@@ -74,6 +72,7 @@ public class ThreadsManager extends Thread
                            suspendThread();
                            suspendThread();
                         }
+                        break;
                     case MEDIUM:
                         if(cpuLoad < 0.7){
                             state = State.LOW;
@@ -83,16 +82,16 @@ public class ThreadsManager extends Thread
                             state = State.HIGH;
                             suspendThread();
                         }
+                        break;
                     case HIGH:
                         if(cpuLoad < 0.9){
                             state = State.MEDIUM;
                             resumeThread();
                         }
+                        break;
                 }
             }
         }
-
-
     }
 
 
