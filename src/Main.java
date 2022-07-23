@@ -1,10 +1,8 @@
 import java.time.LocalTime;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.ArrayList;
 
 public class Main {
 
-    private static final int MAX_T = 4;
 
     public static void main(String[] args) {
 
@@ -13,11 +11,20 @@ public class Main {
         int initialHour = initialTime.getHour(), initialMinute = initialTime.getMinute(),
                 initialSecond = initialTime.getSecond();
 
-        Thread[] timeThreads = new Thread[MAX_T];
-        timeThreads[0] = new RealTime(initialHour, initialMinute, initialSecond,"iran", timeCounter);
-        timeThreads[1] = new RealTime(initialHour, initialMinute,initialSecond, "italy", timeCounter);
-        timeThreads[2] = new RealTime(initialHour, initialMinute, initialSecond,"germany", timeCounter);
-        timeThreads[3] = new RealTime(initialHour, initialMinute,initialSecond, "englandTime", timeCounter);
+        ArrayList<Thread> timeThreads = new ArrayList<>();
+
+        //Initializing the threads
+        timeThreads.add(new RealTime(initialHour, initialMinute, initialSecond,"Iran", timeCounter));
+        timeThreads.add(new RealTime(initialHour, initialMinute,initialSecond, "Italy", timeCounter));
+        timeThreads.add(new RealTime(initialHour, initialMinute, initialSecond,"Germany", timeCounter));
+        timeThreads.add(new RealTime(initialHour, initialMinute,initialSecond, "England", timeCounter));
+
+        //Initializing the priority of the threads
+        timeThreads.get(0).setPriority(1);
+        timeThreads.get(1).setPriority(2);
+        timeThreads.get(2).setPriority(3);
+        timeThreads.get(3).setPriority(4);
+
         ThreadsManager threadsManager = new ThreadsManager(timeThreads);
         threadsManager.start();
 
